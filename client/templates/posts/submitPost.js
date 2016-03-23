@@ -6,5 +6,6 @@
 		content: $(e.target).find('[name=content]').val()
 		};
 		post._id = Posts.insert(post);
+		Router.go('blogPosts')
 	}
 });

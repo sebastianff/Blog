@@ -1,8 +1,6 @@
 <template name="blogPosts">
-	<ul>
 	{{#each posts}}
-		<li>{{title}}</li>
-		<li>{{content}}</li>
+		<h3>{{title}}</h3>
+		<p class="lead align-center"><em>{{content}}</em></p>
 	{{/each}}
-	</ul>
 </template>

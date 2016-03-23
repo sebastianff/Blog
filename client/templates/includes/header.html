@@ -1,17 +1,19 @@
 <template name="header">
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="container-fluid">
-			<ul class="navbar navbar-nav navbar-right">
-				<li>{{> loginButtons}}
-				</li>
-			</ul>
-			<ul class="navbar navbar-nav navbar-right">
-				<li>
+			<div class="navbar-header navbar-right">
+				<button class="btn btn-large">
+				{{> loginButtons}}
+				</button>
+				{{#if currentUser}}
 				<button class="btn btn-large">
 				<a href="{{pathFor 'submitPost'}}">Submit Post</a>
 				</button>
-				</li>
-			</ul>
+				{{/if}}
+			</div>
+			<div class="navbar-left">
+				<a href="{{pathFor 'blogPosts'}}">Home</a>
+			</div>
 		</div>
 	</nav>
 </template>
