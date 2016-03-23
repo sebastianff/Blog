@@ -1,3 +1,7 @@
 <template name="blogPosts">
-	<h1>Here's where the blog posts will go</h1>
+	<ul>
+	{{#each posts}}
+		<li>{{title}}</li>
+	{{/each}}
+	</ul>
 </template>
