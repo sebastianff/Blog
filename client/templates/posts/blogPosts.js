@@ -6,6 +6,13 @@ Template.blogPosts.helpers({
 
 Template.blogPosts.events({
   "click .btn-lg": function (event, template) {
-    Posts.remove(event.target.name)
+    if(Posts.findOne(event.target.name).user=Meteor.userId())
+      {
+        Posts.remove(event.target.name)
+      }
+      else{
+      alert("You are not authorized to delete that post")
+      }
 	}
 });
+
