@@ -6,7 +6,7 @@ Template.blogPosts.helpers({
 
 Template.blogPosts.events({
   "click .btn-lg": function (event, template) {
-    if(Posts.findOne(event.target.name).user=Meteor.userId())
+    if(Posts.findOne(event.target.name).user===Meteor.userId())
       {
         Posts.remove(event.target.name)
       }
