@@ -6,7 +6,7 @@ Template.postEdit.events({
 		content: $(e.target).find('[name=content]').val(),
 		user:Meteor.userId()
 		};
-		post._id = Posts.insert(post);
+		Posts.update(this._id,post);
 		Router.go('blogPosts')
 	}
 });
