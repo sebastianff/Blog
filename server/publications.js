@@ -1,3 +1,3 @@
-Meteor.publish('posts', function(term) {
-	return Posts.find({category:term});
+Meteor.publish('posts', function() {
+	return Posts.find();
 });

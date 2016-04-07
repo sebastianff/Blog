@@ -1,13 +1,15 @@
-	Template.submitPost.events({//Here we collect the data from the form
+Template.submitPost.events({//Here we collect the data from the form
 	'submit form': function(e) {
 		e.preventDefault();
 		var post = {
 		title: $(e.target).find('[name=title]').val(),
 		content: $(e.target).find('[name=content]').val(),
-		category: $(e.target).find('[name=category]').val(),
-		user:Meteor.userId()
+		category: $(e.target).find('[name=category]').val()
 		};
-		Posts.insert(post);
-		Router.go('blogPosts')
+	Meteor.call('postInsert', post, function(error, result) {
+		if (error)
+			return alert(error.reason+"hehe");
+		Router.go('postView', {_id: result._id});
+		});
 	}
 });
