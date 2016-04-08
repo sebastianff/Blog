@@ -3,6 +3,9 @@
 		<h3>{{title}}</h3>
 		<h4>{{category}}</h4>
 		<p class="lead align-center"><em>{{content}}</em></p>
+		<p>
+		<span class="glyphicon glyphicon-thumbs-down">{{likes}}</span>
+		<span class="glyphicon glyphicon-thumbs-up">{{unlikes}}</span></p>
 		<a href="/posts/{{_id}}"><p>View</p></a>
 		<a href="/posts/{{_id}}/edit"><p>Edit</p></a>
 	{{/each}}
