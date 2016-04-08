@@ -1,12 +1,23 @@
 Template.postEdit.events({
 	'submit form': function(e) {
 		e.preventDefault();
-		var post = {
+		var currentPostId = this._id;
+		var postProperties = {
 		title: $(e.target).find('[name=title]').val(),
 		content: $(e.target).find('[name=content]').val(),
 		user:Meteor.userId()
 		};
-		Posts.update(this._id,post);
+		Posts.update(currentPostId,postProperties);
 		Router.go('blogPosts')
+	},
+	'click .btn-lg': function (event, template) {
+    if(this.userId===Meteor.userId())
+      { 
+        if(confirm("Delete this post?"))
+        {Posts.remove(this._id)}
+      }
+      else{
+        alert("You are not authorized to delete that post")
+      }
 	}
 });
