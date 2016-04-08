@@ -7,8 +7,15 @@ Template.postEdit.events({
 		content: $(e.target).find('[name=content]').val(),
 		user:Meteor.userId()
 		};
-		Posts.update(currentPostId,postProperties);
-		Router.go('blogPosts')
+		Posts.update(currentPostId,{$set:postProperties},function(error){
+			if(error){
+				throwError(error.reason)
+			}
+			else{
+				Router.go('blogPosts');
+			}
+		});
+
 	},
 	'click .btn-lg': function (event, template) {
     if(this.userId===Meteor.userId())

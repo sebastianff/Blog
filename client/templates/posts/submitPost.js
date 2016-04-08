@@ -8,7 +8,10 @@ Template.submitPost.events({//Here we collect the data from the form
 		};
 	Meteor.call('postInsert', post, function(error, result) {
 		if (error)
-			return alert(error.reason+"hehe");
+			return throwError(error.reason);
+		if (result.postExists){
+			throwError('Allready posted!')
+		}
 		Router.go('postView', {_id: result._id});
 		});
 	}
