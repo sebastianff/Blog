@@ -16,7 +16,7 @@ Template.submitPost.events({//Here we collect the data from the form
 		if (error)
 			return throwError(error.reason);
 		if (result.postExists){
-			throwError('Allready posted!')
+			Errors.throw('Allready posted!')
 		}
 		Router.go('postView', {_id: result._id});
 		});

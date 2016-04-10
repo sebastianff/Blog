@@ -12,7 +12,7 @@ Template.postEdit.events({
 		return Session.set('postSubmitErrors', errors);
 		Posts.update(currentPostId,{$set:post},function(error){
 			if(error){
-				throwError(error.reason)
+				Errors.throw(error.reason)
 			}
 			else{
 				Router.go('blogPosts');
