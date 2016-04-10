@@ -1,3 +1,6 @@
+Template.submitPost.created = function(){
+	Session.set('postSubmitErrors',{})
+}
 Template.submitPost.events({//Here we collect the data from the form
 	'submit form': function(e) {
 		e.preventDefault();
@@ -6,6 +9,9 @@ Template.submitPost.events({//Here we collect the data from the form
 		content: $(e.target).find('[name=content]').val(),
 		category: $(e.target).find('[name=category]').val()
 		};
+		var errors = validatePost(post);
+		if (errors.title || errors.url)
+		return Session.set('postSubmitErrors', errors);
 	Meteor.call('postInsert', post, function(error, result) {
 		if (error)
 			return throwError(error.reason);
@@ -16,3 +22,12 @@ Template.submitPost.events({//Here we collect the data from the form
 		});
 	}
 });
+
+Template.submitPost.helpers({
+	errorMessage: function(field) {
+		return Session.get('postSubmitErrors')[field];
+	},
+	errorClass: function (field) {
+		return !!Session.get('postSubmitErrors')[field] ? 'has-error' : '';
+	}
+})

@@ -1,12 +1,14 @@
 <template name="postEdit">
 	<form>
-	<div class="form-group">
+	<div class="form-group {{errorClass 'url'}}">
 		<label for="name">Name</label>
 		<input type="name" class="form-control" name="title" id="name" value="{{title}}">
+		<span class="help-block">{{errorMessage 'url'}}</span>
 	</div>
-	<div class="form-group">
+	<div class="form-group {{errorClass 'title'}}">
 		<label for="content">Name</label>
 		<input type="text" class="form-control" name="content" id="content" value="{{content}}">
+		<span class="help-block">{{errorMessage 'title'}}</span>
 	</div>
 	<button class="btn btn-lg">Delete</button>
 	<button type="submit" class="btn btn-large">Post</button>
