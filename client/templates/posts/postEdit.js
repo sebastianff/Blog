@@ -2,12 +2,15 @@ Template.postEdit.events({
 	'submit form': function(e) {
 		e.preventDefault();
 		var currentPostId = this._id;
-		var postProperties = {
+		var post = {
 		title: $(e.target).find('[name=title]').val(),
 		content: $(e.target).find('[name=content]').val(),
 		user:Meteor.userId()
 		};
-		Posts.update(currentPostId,{$set:postProperties},function(error){
+		var errors = validatePost(post);
+		if (errors.title || errors.url)
+		return Session.set('postSubmitErrors', errors);
+		Posts.update(currentPostId,{$set:post},function(error){
 			if(error){
 				throwError(error.reason)
 			}
@@ -28,3 +31,12 @@ Template.postEdit.events({
       }
 	}
 });
+
+Template.postEdit.helpers({
+	errorMessage: function(field) {
+		return Session.get('postSubmitErrors')[field];
+	},
+	errorClass: function (field) {
+		return !!Session.get('postSubmitErrors')[field] ? 'has-error' : '';
+	}
+})

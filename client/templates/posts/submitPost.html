@@ -1,12 +1,14 @@
 <template name="submitPost">
 <form>
-	<div class="form-group">
+	<div class="form-group {{errorClass 'url'}}">
 		<label for="name">Name</label>
 		<input type="name" class="form-control" name="title" id="name" placeholder="name">
+		<span class="help-block">{{errorMessage 'url'}}</span>
 	</div>
-	<div class="form-group">
+	<div class="form-group {{errorClass 'title'}}">
 		<label for="content">Name</label>
 		<input type="text" class="form-control" name="content" id="content" placeholder="content">
+		<span class="help-block">{{errorMessage 'url'}}</span>
 	</div>
 	<div class="form-group">
 		<label for="content">Category</label>
