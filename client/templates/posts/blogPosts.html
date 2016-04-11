@@ -6,7 +6,7 @@
 		<p>
 		<span class="glyphicon glyphicon-thumbs-down">{{likes}}</span>
 		<span class="glyphicon glyphicon-thumbs-up">{{unlikes}}</span></p>
-		<a href="/posts/{{_id}}"><p>View</p></a>
+		<a href="/posts/{{_id}}"><p>View</p>{{commentsCount}} comments</a>
 		<a href="/posts/{{_id}}/edit"><p>Edit</p></a>
 	{{/each}}
 </template>
